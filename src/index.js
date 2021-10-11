@@ -4,6 +4,11 @@ import fs from "fs";
 
 dotenv.config();
 
+const getCommand = async (file) => {
+    const { default: command } = await import(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+}
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
@@ -11,8 +16,7 @@ client.commands = new Collection();
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-    const { default: command } = await import(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
+    getCommand(file);
 }
 
 client.once('ready', () => {
