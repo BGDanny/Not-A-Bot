@@ -1,4 +1,3 @@
-## I don't know who I am but definitely not a bot
 # Repl
 ```bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
