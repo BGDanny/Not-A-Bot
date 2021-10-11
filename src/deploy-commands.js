@@ -8,7 +8,7 @@ dotenv.config();
 
 const commands = [];
 
-const getCommand = async () => {
+(async () => {
     const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
@@ -21,7 +21,7 @@ const getCommand = async () => {
     rest.put(Routes.applicationGuildCommands(process.env.clientId, process.env.guildId), { body: commands })
         .then(() => console.log('Successfully registered application commands.'))
         .catch(console.error);
-}
+})();
 
-getCommand();
+
 
