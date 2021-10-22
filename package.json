@@ -5,17 +5,22 @@
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",
-    "node-fetch": "^3.0.0"
+    "node-fetch": "^2.6.5",
+    "ts-node": "^10.3.1",
+    "typescript": "^4.4.4"
   },
-  "type": "module",
   "name": "not-a-bot",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.12"
+  }
 }
