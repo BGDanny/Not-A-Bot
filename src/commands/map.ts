@@ -12,5 +12,6 @@ export default {
         console.log(interaction.options.getString("name"));
         console.log(brawlerToId);
         await interaction.editReply('Pong!');
+        console.log("1");
     },
 };

@@ -1,26 +1,28 @@
 {
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "ts-node": "^10.3.1",
+    "ts-node-dev": "^1.1.8",
+    "@types/string-similarity": "^4.0.0",
+    "@types/node-fetch": "^2.5.12"
+  },
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
-    "@discordjs/rest": "^0.1.0-canary.0",
+    "@types/string-similarity": "^4.0.0",
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",
     "node-fetch": "^2.6.5",
-    "ts-node": "^10.3.1",
-    "typescript": "^4.4.4"
+    "string-similarity": "^4.0.4"
   },
   "name": "not-a-bot",
   "version": "1.0.0",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node-dev src/index.ts"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/node-fetch": "^2.5.12"
-  }
+  "license": "ISC"
 }

@@ -1,0 +1,6 @@
+interface Records {
+
+    [key: string]: {
+
+    }
+}
