@@ -37,9 +37,18 @@ export const getMap = async (mapId: number): Promise<types.Map.RootObject | unde
     }
 }
 
-export const getRecord = async (): Promise<types.Records.RootObject | undefined> => {
+export const getRecords = async (): Promise<types.Records.RootObject | undefined> => {
     try {
         const res = await fetch(`https://api.brawlapi.com/v1/records`);
+        return await res.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const getEvents = async (): Promise<types.Events.RootObject | undefined> => {
+    try {
+        const res = await fetch(`https://api.brawlapi.com/v1/events/600+`);
         return await res.json();
     } catch (err) {
         console.log(err);

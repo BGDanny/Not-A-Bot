@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { brawlerNames, brawlerIds } from "../index";
 import { ColorResolvable, CommandInteraction, MessageEmbed, EmbedFieldData } from "discord.js";
 import { findBestMatch } from "string-similarity";
-import { getRecord, getBrawler } from "../api";
+import { getRecords, getBrawler } from "../api";
 
 export default {
     data: new SlashCommandBuilder()
@@ -15,12 +15,12 @@ export default {
         const resultIndex = findBestMatch(userInput, brawlerNames).bestMatchIndex;
         const brawlerId = brawlerIds[resultIndex];
         const brawler = await getBrawler(brawlerId);
-        const bralwerRecords = await getRecord();
+        const bralwerRecords = await getRecords();
         let message = new MessageEmbed();
         if (brawler && bralwerRecords) {
             let bralwerRecordData: EmbedFieldData[] = [];
             let brawlerRecord = bralwerRecords[brawlerId];
-            if (brawlerRecord.length > +3) {
+            if (brawlerRecord.length > 3) {
                 for (let i = 0; i < 3; i++) {
                     bralwerRecordData.push({
                         name: brawlerRecord[i].player.name, value: `${brawlerRecord[i].best}:trophy: Achieved at ${new Date(brawlerRecord[i].achieved_at).toLocaleDateString()}`
