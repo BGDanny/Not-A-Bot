@@ -1,4 +1,4 @@
-export declare module Brawler {
+export declare module Brawlers {
 
     export interface Class {
         id: number;

@@ -1,2 +1,2 @@
-export { Brawler } from "./brawler";
-export { Map } from "./map";
+export { Brawlers } from "./brawler";
+export { Maps, Map } from "./map";

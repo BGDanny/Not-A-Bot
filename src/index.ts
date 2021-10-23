@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { Client, Intents, Collection, CommandInteraction } from "discord.js";
 import fs from "fs";
-import { getBrawler } from "./api";
+import { getBrawlers } from "./api";
 
 dotenv.config();
 
@@ -9,8 +9,10 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 
 const commands = new Collection<string, { name: string, execute: (interaction: CommandInteraction) => void }>();
 
-let brawlerToId: { [key: string]: number }[];
-// let mapToId = {};
+let brawlerNames: string[];
+let brawlerIds: number[];
+let mapNames: string[];
+let mapIds: number[];
 
 const dynamicImport = async () => {
     const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.ts'));
@@ -35,18 +37,28 @@ const dynamicImport = async () => {
 (async () => {
     await dynamicImport();
 
-    const brawler = await getBrawler();
-
-    if (brawler) {
-        brawlerToId = brawler.list.map(i => {
-            return { [i.name]: i.id };
+    const brawlers = await getBrawlers();
+    if (brawlers) {
+        brawlerNames = brawlers.list.map(i => {
+            return i.name.toLowerCase();
         });
-        console.log(brawlerToId);
+        brawlerIds = brawlers.list.map(i => {
+            return i.id;
+        });
     }
 
+    const maps = await getBrawlers();
+    if (maps) {
+        mapNames = maps.list.map(i => {
+            return i.name.toLowerCase();
+        });
+        mapIds = maps.list.map(i => {
+            return i.id;
+        });
+    }
 })();
 
 client.login(process.env.token);
 
 export default commands;
-export { brawlerToId };
+export { brawlerNames, brawlerIds, mapNames, mapIds };
