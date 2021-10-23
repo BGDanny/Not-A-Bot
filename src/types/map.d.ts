@@ -23,7 +23,7 @@ export declare module Maps {
         id: number;
         new: boolean;
         disabled: boolean;
-        name: string;
+        name: string | null;
         hash: string;
         version: number;
         link: string;

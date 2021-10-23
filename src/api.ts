@@ -10,7 +10,7 @@ export const getBrawlers = async (): Promise<types.Brawlers.RootObject | undefin
     }
 }
 
-export const getBralwer = async (brawlerId: number): Promise<types.Brawlers.List | undefined> => {
+export const getBrawler = async (brawlerId: number): Promise<types.Brawlers.List | undefined> => {
     try {
         const res = await fetch(`https://api.brawlapi.com/v1/brawlers/${brawlerId}`);
         return await res.json();
@@ -30,7 +30,16 @@ export const getMaps = async (): Promise<types.Maps.RootObject | undefined> => {
 
 export const getMap = async (mapId: number): Promise<types.Map.RootObject | undefined> => {
     try {
-        const res = await fetch(`https://api.brawlapi.com/v1/maps/${mapId}`);
+        const res = await fetch(`https://api.brawlapi.com/v1/maps/${mapId}/600+`);
+        return await res.json();
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const getRecord = async (): Promise<types.Records.RootObject | undefined> => {
+    try {
+        const res = await fetch(`https://api.brawlapi.com/v1/records`);
         return await res.json();
     } catch (err) {
         console.log(err);

@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { Client, Intents, Collection, CommandInteraction } from "discord.js";
 import fs from "fs";
-import { getBrawlers } from "./api";
+import { getBrawlers, getMaps } from "./api";
 
 dotenv.config();
 
@@ -11,6 +11,7 @@ const commands = new Collection<string, { name: string, execute: (interaction: C
 
 let brawlerNames: string[];
 let brawlerIds: number[];
+let brawlerIdToNames: { [key: number]: string } = {};
 let mapNames: string[];
 let mapIds: number[];
 
@@ -45,12 +46,18 @@ const dynamicImport = async () => {
         brawlerIds = brawlers.list.map(i => {
             return i.id;
         });
+        brawlers.list.forEach(i => {
+            brawlerIdToNames[i.id] = i.name;
+        });
     }
 
-    const maps = await getBrawlers();
+    const maps = await getMaps();
     if (maps) {
         mapNames = maps.list.map(i => {
-            return i.name.toLowerCase();
+            const name = i.name?.toLowerCase();
+            if (name !== undefined)
+                return name;
+            return "";
         });
         mapIds = maps.list.map(i => {
             return i.id;
@@ -61,4 +68,4 @@ const dynamicImport = async () => {
 client.login(process.env.token);
 
 export default commands;
-export { brawlerNames, brawlerIds, mapNames, mapIds };
+export { brawlerNames, brawlerIds, brawlerIdToNames, mapNames, mapIds };

@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { brawlerNames, brawlerIds } from "../index";
 import { ColorResolvable, CommandInteraction, MessageEmbed } from "discord.js";
 import { findBestMatch } from "string-similarity";
-import { getBralwer } from "../api";
+import { getBrawler } from "../api";
 
 export default {
     data: new SlashCommandBuilder()
@@ -13,9 +13,9 @@ export default {
         await interaction.deferReply();
         const userInput = interaction.options.getString("name")?.toLowerCase() as string;
         const resultIndex = findBestMatch(userInput, brawlerNames).bestMatchIndex;
-        const brawler = await getBralwer(brawlerIds[resultIndex]);
+        const brawler = await getBrawler(brawlerIds[resultIndex]);
         let message = new MessageEmbed();
-        if (brawler)
+        if (brawler) {
             message
                 .setTitle(brawler.name)
                 .setThumbnail(brawler.imageUrl)
@@ -32,6 +32,7 @@ export default {
                 })))
                 .setTimestamp()
                 .setFooter(brawler.class.name, brawler.imageUrl3);
+        }
         await interaction.editReply({ embeds: [message] });
     },
 };
