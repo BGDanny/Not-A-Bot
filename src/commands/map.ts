@@ -19,6 +19,9 @@ export default {
             let brawlerPick = "";
             let teamComp = "";
             if (map.stats.length > 10 && map.teamStats.length > 10) {
+                map.teamStats.sort((first, second) => {
+                    return second.data.winRate - first.data.winRate;
+                });
                 for (let i = 0; i < 10; i++) {
                     brawlerPick += `${brawlerIdToNames[map.stats[i].brawler]}: ${Math.round(map.stats[i].winRate)}%\n`;
                     teamComp += `${map.teamStats[i].name}: ${Math.round(map.teamStats[i].data.winRate)}%\n`;
