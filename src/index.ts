@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { Client, Intents, Collection, CommandInteraction } from "discord.js";
 import fs from "fs";
 import { getBrawlers, getMaps } from "./api";
-import { keepAlive } from "./server";
 
 dotenv.config();
 
@@ -65,8 +64,6 @@ const dynamicImport = async () => {
         });
     }
 })();
-
-keepAlive();
 
 client.login(process.env.Token);
 
