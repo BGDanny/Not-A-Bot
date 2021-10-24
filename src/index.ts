@@ -68,7 +68,7 @@ const dynamicImport = async () => {
 
 keepAlive();
 
-client.login(process.env.token);
+client.login(process.env.Token);
 
 export default commands;
 export { brawlerNames, brawlerIds, brawlerIdToNames, mapNames, mapIds };
