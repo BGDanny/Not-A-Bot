@@ -20,9 +20,9 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev src/index.ts",
-    "build": "ts-node-dev src/deploy-commands.ts",
-    "start:prod": "ts-node src/index.ts"
+    "start:dev": "ts-node-dev src/index.ts",
+    "start": "ts-node src/index.ts",
+    "start:deploy": "ts-node src/deploy-commands.ts"
   },
   "keywords": [],
   "author": "",
