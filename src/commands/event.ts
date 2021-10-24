@@ -13,7 +13,7 @@ export default {
             .addChoice("Active", "active")
             .addChoice("Upcoming", "upcoming")),
     async execute(interaction: CommandInteraction) {
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: interaction.channelId !== "898783957452193812" });
         const userInput = interaction.options.getString("choose")?.toLowerCase() as string;
         const events = await getEvents();
         let message = new MessageEmbed();

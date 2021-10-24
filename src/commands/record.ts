@@ -10,7 +10,7 @@ export default {
         .setDescription('Get the record for a BS brawler')
         .addStringOption(option => option.setName('name').setDescription('Enter the name of a brawler').setRequired(true)),
     async execute(interaction: CommandInteraction) {
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: interaction.channelId !== "898783957452193812" });
         const userInput = interaction.options.getString("name")?.toLowerCase() as string;
         const resultIndex = findBestMatch(userInput, brawlerNames).bestMatchIndex;
         const brawlerId = brawlerIds[resultIndex];

@@ -10,7 +10,7 @@ export default {
         .setDescription('Get stats for a BS map')
         .addStringOption(option => option.setName('name').setDescription('Enter the name of a map').setRequired(true)),
     async execute(interaction: CommandInteraction) {
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: interaction.channelId !== "898783957452193812" });
         const userInput = interaction.options.getString("name")?.toLowerCase() as string;
         const resultIndex = findBestMatch(userInput, mapNames).bestMatchIndex;
         const map = await getMap(mapIds[resultIndex]);
