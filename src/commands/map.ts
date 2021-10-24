@@ -17,24 +17,18 @@ export default {
         let message = new MessageEmbed();
         if (map) {
             let brawlerPick = "";
-            let teamComp = "";
-            if (map.stats.length > 10 && map.teamStats.length > 10) {
-                map.teamStats.sort((first, second) => {
-                    return second.data.winRate - first.data.winRate;
-                });
-                for (let i = 0; i < 10; i++) {
+            if (map.stats.length > 20) {
+                for (let i = 0; i < 20; i++) {
                     brawlerPick += `${brawlerIdToNames[map.stats[i].brawler]}: ${Math.round(map.stats[i].winRate)}%\n`;
-                    teamComp += `${map.teamStats[i].name}: ${Math.round(map.teamStats[i].data.winRate)}%\n`;
                 }
             } else {
-                brawlerPick = teamComp = "N/A";
+                brawlerPick = "N/A";
             }
             message
                 .setTitle(map.name)
                 .setThumbnail(map.imageUrl)
                 .setURL(map.link)
                 .addField("Top Brawler Win Rate", brawlerPick)
-                .addField("Top Team Win Rate", teamComp)
                 .setTimestamp()
                 .setFooter(map.gameMode.name, map.gameMode.imageUrl);
         }
