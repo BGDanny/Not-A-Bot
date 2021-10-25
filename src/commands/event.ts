@@ -1,5 +1,4 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { mapIds, mapNames, brawlerIdToNames } from "../index";
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { getEvents } from "../api";
 

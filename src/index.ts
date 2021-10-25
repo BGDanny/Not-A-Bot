@@ -5,7 +5,7 @@ import { getBrawlers, getMaps } from "./api";
 
 dotenv.config();
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+export const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES] });
 
 const commands = new Collection<string, { name: string, execute: (interaction: CommandInteraction) => void }>();
 
