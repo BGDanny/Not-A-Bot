@@ -16,7 +16,7 @@ export default {
         const brawlerId = brawlerIds[resultIndex];
         const brawler = await getBrawler(brawlerId);
         const bralwerRecords = await getRecords();
-        let message = new MessageEmbed();
+        const message = new MessageEmbed();
         if (brawler && bralwerRecords) {
             let bralwerRecordData: EmbedFieldData[] = [];
             let brawlerRecord = bralwerRecords[brawlerId];

@@ -15,7 +15,7 @@ export default {
         await interaction.deferReply({ ephemeral: interaction.channelId !== "898783957452193812" });
         const userInput = interaction.options.getString("choose")?.toLowerCase() as string;
         const events = await getEvents();
-        let message = new MessageEmbed();
+        const message = new MessageEmbed();
         if (events) {
             const msToTime = (ms: number): string => {
                 let days = Math.floor(ms / (60000 * 60 * 24));

@@ -8,10 +8,10 @@ dotenv.config();
 const commands = [];
 
 (async () => {
-    const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.ts'));
+    const commandFiles = fs.readdirSync('./src/slash-commands').filter(file => file.endsWith('.ts'));
 
     for (const file of commandFiles) {
-        const { default: command } = await import(`./commands/${file}`);
+        const { default: command } = await import(`./slash-commands/${file}`);
         commands.push(command.data.toJSON());
     }
 

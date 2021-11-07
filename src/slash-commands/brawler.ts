@@ -14,7 +14,7 @@ export default {
         const userInput = interaction.options.getString("name")?.toLowerCase() as string;
         const resultIndex = findBestMatch(userInput, brawlerNames).bestMatchIndex;
         const brawler = await getBrawler(brawlerIds[resultIndex]);
-        let message = new MessageEmbed();
+        const message = new MessageEmbed();
         if (brawler) {
             message
                 .setTitle(brawler.name)

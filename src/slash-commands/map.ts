@@ -14,7 +14,7 @@ export default {
         const userInput = interaction.options.getString("name")?.toLowerCase() as string;
         const resultIndex = findBestMatch(userInput, mapNames).bestMatchIndex;
         const map = await getMap(mapIds[resultIndex]);
-        let message = new MessageEmbed();
+        const message = new MessageEmbed();
         if (map) {
             let brawlerPick = "";
             if (map.stats.length > 20) {
