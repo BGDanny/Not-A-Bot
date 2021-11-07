@@ -1,6 +1,7 @@
 import { Command, PieceContext, Args } from "@sapphire/framework";
 import { Message } from "discord.js";
 import { player } from "..";
+import { getVoiceConnection } from "@discordjs/voice";
 
 export default class MusicCommand extends Command {
     constructor(context: PieceContext) {
@@ -10,6 +11,11 @@ export default class MusicCommand extends Command {
     async messageRun(message: Message, args: Args) {
         if (!message.member!.voice.channel) {
             message.reply("Join a voice channel first");
+            return;
+        }
+        const connection = getVoiceConnection(message.guild!.id);
+        if (connection) {
+            message.reply("Something is playing already");
             return;
         }
         const urlPromise = await args.pickResult("string");

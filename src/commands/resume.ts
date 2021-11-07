@@ -4,7 +4,10 @@ import { player } from "..";
 
 export default class MusicCommand extends Command {
     constructor(context: PieceContext) {
-        super(context);
+        super(context, {
+            name: "resume",
+            aliases: ["r"],
+        });
     }
 
     async messageRun(message: Message) {

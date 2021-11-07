@@ -9,7 +9,7 @@ dotenv.config();
 
 const client = new SapphireClient({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES],
-    defaultPrefix: "/",
+    defaultPrefix: "_",
 });
 
 const player = new Player(client, {
@@ -73,6 +73,8 @@ const dynamicImport = async () => {
         });
     }
 })();
+
+player.on("error", (error) => console.log(error))
 
 client.login(process.env.Token);
 
